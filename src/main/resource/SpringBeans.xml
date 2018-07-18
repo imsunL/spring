@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!--<bean id="helloBean" class="com.xyz.demo.hello.HelloWorld">
+        <property name="name" value="xyz" />
+    </bean>-->
+
+    <bean id="FilNameGererator" class="com.xyz.demo.spring.bean.FileNameGererator">
+        <property name="name" value="xyz"/>
+        <property name="type" value="txt"/>
+
+    </bean>
+
+    <!--用ref引用-->
+    <!--<bean id="CustomerBean" class="com.xyz.demo.spring.innerBean.Customer">
+        <property name="person" ref="PersonBean"/>
+    </bean>
+    <bean id="PersonBean" class="com.xyz.demo.spring.innerBean.Person">
+        <property name="name" value="xyz"/>
+        <property name="address" value="sz"/>
+        <property name="age" value="20"/>
+    </bean>-->
+
+    <!--在 Customer 的 Bean 中声明一个内部 Bean-->
+    <bean id="CustomerBean" class="com.xyz.demo.spring.innerBean.Customer">
+        <property name="person">
+            <bean class="com.xyz.demo.spring.innerBean.Person">
+                <property name="age" value="20"/>
+                <property name="address" value="sz"/>
+                <property name="name" value="xyz"/>
+            </bean>
+        </property>
+    </bean>
+
+
+
+</beans>
